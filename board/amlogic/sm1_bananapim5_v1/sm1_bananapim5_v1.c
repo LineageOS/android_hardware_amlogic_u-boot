@@ -59,18 +59,9 @@
 #endif
 
 DECLARE_GLOBAL_DATA_PTR;
-#define P_EE_PCIE_A_CTRL    (volatile uint32_t *)(0xff646000 + (0x000 << 2))
 
 //new static eth setup
 struct eth_board_socket*  eth_board_skt;
-
-static void pcie_phy_shutdown(void)
-{
-	/*power down pcieA*/
-	writel(0x20000060, P_HHI_PCIE_PLL_CNTL5);
-	writel(0x20090496, P_HHI_PCIE_PLL_CNTL0);
-	writel(0x1d, P_EE_PCIE_A_CTRL);
-}
 
 int serial_set_pin_port(unsigned long port_base)
 {
@@ -599,8 +590,6 @@ U_BOOT_DEVICES(meson_pwm) = {
 };
 #endif /*end CONFIG_PWM_MESON*/
 
-extern void aml_pwm_cal_init(int mode);
-
 int board_init(void)
 {
     //Please keep CONFIG_AML_V2_FACTORY_BURN at first place of board_init
@@ -747,11 +736,8 @@ int board_late_init(void)
 		aml_try_factory_sdcard_burning(0, gd->bd);
 #endif// #ifdef CONFIG_AML_V2_FACTORY_BURN
 
-	/* close pcie phy */
-	pcie_phy_shutdown();
-
     if (MESON_CPU_MAJOR_ID_SM1 == get_cpu_id().family_id) {
-		setenv("board_defined_bootup", "bootup_Y3");
+		setenv("board_defined_bootup", "bootup_X3");
 	}
 	/**/
 	aml_config_dtb();
