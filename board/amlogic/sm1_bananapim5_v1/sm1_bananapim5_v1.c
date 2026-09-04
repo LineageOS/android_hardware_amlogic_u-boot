@@ -58,20 +58,13 @@
 #ifdef CONFIG_AML_SPIFC
 #include <amlogic/spifc.h>
 #endif
+#include <asm/arch/timer.h>
 
 DECLARE_GLOBAL_DATA_PTR;
-#define P_EE_PCIE_A_CTRL    (volatile uint32_t *)(0xff646000 + (0x000 << 2))
 
 //new static eth setup
 struct eth_board_socket*  eth_board_skt;
 
-static void pcie_phy_shutdown(void)
-{
-	/*power down pcieA*/
-	writel(0x20000060, P_HHI_PCIE_PLL_CNTL5);
-	writel(0x20090496, P_HHI_PCIE_PLL_CNTL0);
-	writel(0x1d, P_EE_PCIE_A_CTRL);
-}
 
 int serial_set_pin_port(unsigned long port_base)
 {
@@ -600,8 +593,6 @@ U_BOOT_DEVICES(meson_pwm) = {
 };
 #endif /*end CONFIG_PWM_MESON*/
 
-extern void aml_pwm_cal_init(int mode);
-
 int board_init(void)
 {
     //Please keep CONFIG_AML_V2_FACTORY_BURN at first place of board_init
@@ -623,10 +614,31 @@ int board_init(void)
 	extern int amlnf_init(unsigned char flag);
 	amlnf_init(0);
 #endif
-
 #ifdef CONFIG_SYS_I2C_MESON
 	set_i2c_ao_pinmux();
 #endif
+
+/* BPI-M5 power on USB3-HUB */
+unsigned int val;
+	val = readl(PREG_PAD_GPIO3_EN_N);
+	val &= ~(1<<6);
+	writel(val, PREG_PAD_GPIO3_EN_N);
+	printf("gpio: GPIOH_6 usb power-on\n");
+
+	val = readl(PERIPHS_PIN_MUX_B);
+	val &= (~(0xf << 24));
+	writel(val, PERIPHS_PIN_MUX_B);
+
+	udelay(100);
+
+	val = readl(PREG_PAD_GPIO3_EN_N);
+	val &= ~(1<<4);
+	writel(val, PREG_PAD_GPIO3_EN_N);
+	printf("gpio: GPIOH_4 usb reset\n");
+
+	val = readl(PERIPHS_PIN_MUX_B);
+	val &= (~(0xf << 16));
+	writel(val, PERIPHS_PIN_MUX_B);
 
 	return 0;
 }
@@ -687,6 +699,7 @@ void aml_config_dtb(void)
 #ifdef CONFIG_BOARD_LATE_INIT
 int board_late_init(void)
 {
+	TE(__func__);
 		//update env before anyone using it
 		run_command("get_rebootmode; echo reboot_mode=${reboot_mode}; "\
 						"if test ${reboot_mode} = factory_reset; then "\
@@ -748,14 +761,13 @@ int board_late_init(void)
 		aml_try_factory_sdcard_burning(0, gd->bd);
 #endif// #ifdef CONFIG_AML_V2_FACTORY_BURN
 
-	/* close pcie phy */
-	pcie_phy_shutdown();
-
     if (MESON_CPU_MAJOR_ID_SM1 == get_cpu_id().family_id) {
-		setenv("board_defined_bootup", "bootup_Y3");
+		setenv("board_defined_bootup", "bootup_X3");
 	}
 	/**/
 	aml_config_dtb();
+
+	TE(__func__);
 	return 0;
 }
 #endif
@@ -804,6 +816,8 @@ int checkhw(char * name)
 	for (i=0; i<CONFIG_NR_DRAM_BANKS; i++) {
 		ddr_size += gd->bd->bi_dram[i].size;
 	}
+
+	printf("checkhw: ddr_size=%x\n", ddr_size);
 
 #if defined(CONFIG_SYS_MEM_TOP_HIDE)
 	ddr_size += CONFIG_SYS_MEM_TOP_HIDE;
