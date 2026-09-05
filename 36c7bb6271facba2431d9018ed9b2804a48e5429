@@ -22,6 +22,30 @@
       },
       "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826cadf0_250aa942",
+        "filename": "board/amlogic/configs/sm1_bananapim5_v1.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-05T22:36:42Z",
+      "side": 1,
+      "message": "it\u0027s not right haha. This should fallback to the default m5 config.",
+      "parentUuid": "c65f030a_3f8758ae",
+      "range": {
+        "startLine": 327,
+        "startChar": 31,
+        "endLine": 327,
+        "endChar": 43
+      },
+      "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
