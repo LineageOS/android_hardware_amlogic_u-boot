@@ -70,6 +70,30 @@
       },
       "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661fdf11_e77d79a6",
+        "filename": "board/amlogic/configs/sm1_bananapim5_v1.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-06T16:25:16Z",
+      "side": 1,
+      "message": "\u003e  The reason why I did that is already in the commit message. Take a look at the code—since the aml_dt variable is subject only to the multi-dtb condition, it doesn\u0027t get set when using a single-dtb (which is our case), and the recovery bootargs would just end up with an ugly aml_dt\u003d.\n\nWell, I guess that is because aml_dt was removed from env settings in the first place. See: https://review.lineageos.org/c/LineageOS/android_hardware_amlogic_u-boot/+/501280/25/board/amlogic/configs/sm1_bananapim5_v1.h. I guess we can restore that and just abandon this change.",
+      "parentUuid": "d06a27f9_691757c3",
+      "range": {
+        "startLine": 327,
+        "startChar": 31,
+        "endLine": 327,
+        "endChar": 43
+      },
+      "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
