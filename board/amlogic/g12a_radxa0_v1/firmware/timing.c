@@ -58,7 +58,9 @@
 
 ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 {
-	/* g12a skt (u209) lpddr4 */
+	/* radxa0: LPDDR4, dual rank, auto-size.
+	 * Values from Radxa's own bootloader: https://github.com/radxa/fip
+	 */
 	.board_id				= CONFIG_BOARD_ID_MASK,
 	.version				= 1,
 	//.dram_rank_config		= CONFIG_DDR0_32BIT_RANK01_CH0,
@@ -68,7 +70,6 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.DRAMFreq				= {1392, 0, 0, 0},
 	.ddr_base_addr			= CFG_DDR_BASE_ADDR,
 	.ddr_start_offset		= CFG_DDR_START_OFFSET,
-	.imem_load_addr			= 0xFFFC0000, //sram
 	.dmem_load_size			= 0x1000, //4K
 
 	.DisabledDbyte			= 0xf0,
@@ -110,7 +111,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 							[4] = ( 30| 12 << 5 | 13 << 10 |  14<< 15 |  0 << 20 |  0 << 25 ),
 	},
 	.ddr_lpddr34_ca_remap	= {00,00},
-	.ddr_lpddr34_dq_remap	= {3,0,2,1,7,6,5,4, 13,12,15,14,10,8,11,9, 19,21,22,20,16,18,17,23, 26,27,25,24,31,29,30,28},
+	.ddr_lpddr34_dq_remap	= {3,2,0,1,7,6,5,4, 14,13,12,15,8,9,11,10, 20,21,22,23,16,17,19,18, 24,25,28,26,31,30,27,29},
 	.dram_rtt_nom_wr_park	= {00,00},
 
 	/* pll ssc config:
@@ -131,6 +132,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.diagnose				= CONFIG_DIAGNOSE_DISABLE,
 },
 {
+	/* radxa0: LPDDR4, single rank */
 	.board_id				= CONFIG_BOARD_ID_MASK,
 	.version				= 1,
 	//.dram_rank_config		= CONFIG_DDR0_32BIT_RANK01_CH0,
@@ -140,7 +142,6 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.DRAMFreq				= {1392, 0, 0, 0},
 	.ddr_base_addr			= CFG_DDR_BASE_ADDR,
 	.ddr_start_offset		= CFG_DDR_START_OFFSET,
-	.imem_load_addr			= 0xFFFC0000, //sram
 	.dmem_load_size			= 0x1000, //4K
 
 	.DisabledDbyte			= 0xf0,
@@ -182,7 +183,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 							[4] = ( 30| 12 << 5 | 13 << 10 |  14<< 15 |  0 << 20 |  0 << 25 ),
 	},
 	.ddr_lpddr34_ca_remap	= {00,00},
-	.ddr_lpddr34_dq_remap	= {3,0,2,1,7,6,5,4, 13,12,15,14,10,8,11,9, 19,21,22,20,16,18,17,23, 26,27,25,24,31,29,30,28},
+	.ddr_lpddr34_dq_remap	= {3,2,0,1,7,6,5,4, 14,13,12,15,8,9,11,10, 20,21,22,23,16,17,19,18, 24,25,28,26,31,30,27,29},
 	.dram_rtt_nom_wr_park	= {00,00},
 
 	/* pll ssc config:
@@ -200,6 +201,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_settings"))) = {
 	.pll_ssc_mode			= (1<<20) | (1<<8) | (2<<4) | 0,//center_ssc_1000ppm
 	.ddr_func				= DDR_FUNC,
 	.magic					= DRAM_CFG_MAGIC,
+	.diagnose				= CONFIG_DIAGNOSE_DISABLE,
 },
 };
 
