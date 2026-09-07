@@ -16,6 +16,24 @@
       "message": "DDR timings are wrong. Must be fixed.",
       "revId": "76473563a48253f3077948e93e3935694a449b8d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe18ba22_ce3f75eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-07T23:49:55Z",
+      "side": 1,
+      "message": "Fixed in: https://review.lineageos.org/c/LineageOS/android_hardware_amlogic_u-boot/+/501575/",
+      "parentUuid": "3efa147a_6c826a3a",
+      "revId": "76473563a48253f3077948e93e3935694a449b8d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
