@@ -216,8 +216,18 @@ static int unifykey_item_dt_parse(const void* dt_addr,int nodeoffset,int id,char
         temp_item->dev = KEY_M_NORAML_KEY;
     }
     else{
-        KM_ERR("key-device %s is unknown at key_%d\n", propdata, id);
-        return __LINE__;
+        /* The kernel driver for this same property (efuse_unifykey/
+         * unifykey_dts.c) flags an unrecognised key-device as KEY_UNKNOWN_DEV
+         * and carries on; only here is it fatal. Newer device trees declare
+         * "provision" keys (DRM, HDCP, keymaster) that this parser predates,
+         * and aborting on the first one discards the whole key table, so
+         * keyman init fails and cmdline_keys never runs -- dropping
+         * androidboot.serialno and androidboot.oem.key1 entirely, including
+         * their hardcoded fallbacks. Match the kernel and keep parsing;
+         * unifykey_item_verify_check() rejects the entry at point of use.
+         */
+        KM_ERR("key-device %s is unknown at key_%d, skipping\n", propdata, id);
+        temp_item->dev = KEY_M_UNKNOW_DEV;
     }
 
 	propdata = (char*)fdt_getprop((const void *)dt_addr, nodeoffset, "key-type",NULL);
