@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc2059e_054a9dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-09T20:34:26Z",
+      "side": 1,
+      "message": "```suggestion\ncommand line instead, but guarded so that it doesn\u0027t land in production\n```",
+      "revId": "d19a5ded76f88dc8b75f85a85f4ba66e24d005cc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
