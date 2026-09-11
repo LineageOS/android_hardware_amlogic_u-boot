@@ -859,6 +859,11 @@ static int do_autocali(cmd_tbl_t *cmdtp, int flag, int argc,
 	key_unify_write("eth_exphy_para", &unify_eth, sizeof(struct unify_eth_info));
 	bestwindow = unify_eth.index;
 	do_cali_process = 0;
+	phy_write(priv->phydev, MDIO_DEVAD_NONE, 0, 0x8000);
+	mdelay(40);
+	phy_write(priv->phydev, MDIO_DEVAD_NONE, 0, 0x1140);
+	writel(0x1621, 0xff634540);
+	writel((cali_window % 16) << 16, 0xff634544);
 	return 0;
 }
 
