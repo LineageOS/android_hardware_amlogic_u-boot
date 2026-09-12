@@ -18,6 +18,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0c1df3_3693b505",
+        "filename": "board/amlogic/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3ae828_e11aa784",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "789e9964_0ce0bb70",
@@ -31,6 +49,24 @@
       "writtenOn": "2026-09-12T23:37:45Z",
       "side": 1,
       "message": "not alphabetized right",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca5a960_26c3f7e9",
+        "filename": "board/amlogic/Kconfig",
+        "patchSetId": 11
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789e9964_0ce0bb70",
       "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -157,6 +193,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271f416d_97e478c0",
+        "filename": "board/amlogic/g12b_x96x9_v1/firmware/scp_task/pwr_ctrl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b8b174_d789a0dd",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cd8d4b4_dac6135b",
@@ -170,6 +224,24 @@
       "writtenOn": "2026-09-12T23:37:45Z",
       "side": 1,
       "message": "nuke - that\u0027s what I did on others.",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38a028a_5f158a4f",
+        "filename": "board/amlogic/g12b_x96x9_v1/firmware/timing.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cd8d4b4_dac6135b",
       "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -191,6 +263,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "250c8b97_851d9057",
+        "filename": "board/amlogic/g12b_x96x9_v1/g12b_x96x9_v1.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f6e061b_bfdb4d38",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258cfb76_e61b1bed",
@@ -204,6 +294,24 @@
       "writtenOn": "2026-09-12T23:37:45Z",
       "side": 1,
       "message": "nuke - that\u0027s what I did on others.",
+      "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4bf978_58440f91",
+        "filename": "board/amlogic/g12b_x96x9_v1/lcd_extern.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-12T23:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258cfb76_e61b1bed",
       "revId": "b573fd41ce71b5fecd9a793602a980e2036ef5ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
