@@ -94,6 +94,30 @@
       },
       "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc2eed5_6787c44e",
+        "filename": "board/amlogic/configs/sm1_bananapim5_v1.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-12T09:55:57Z",
+      "side": 1,
+      "message": "Restored \"aml_dt\u003dsm1_s905x3_bananapim5\".",
+      "parentUuid": "661fdf11_e77d79a6",
+      "range": {
+        "startLine": 327,
+        "startChar": 31,
+        "endLine": 327,
+        "endChar": 43
+      },
+      "revId": "36c7bb6271facba2431d9018ed9b2804a48e5429",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
