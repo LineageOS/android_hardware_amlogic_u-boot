@@ -1026,6 +1026,7 @@ source "board/zipitz2/Kconfig"
 
 source "board/amlogic/Kconfig"
 source "board/harman/Kconfig"
+source "board/khadas/Kconfig"
 source "customer/board/Kconfig"
 
 source "arch/arm/Kconfig.debug"
