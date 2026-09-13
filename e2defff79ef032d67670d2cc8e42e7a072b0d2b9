@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92133a87_2ac61933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 17162
+      },
+      "writtenOn": "2026-09-13T02:32:53Z",
+      "side": 1,
+      "message": "works fine on x96x9 with both 4.9 and 5.15 kernels. Must for 5.15, 4.9 works without it as well.",
+      "revId": "e2defff79ef032d67670d2cc8e42e7a072b0d2b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
