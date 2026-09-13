@@ -470,13 +470,23 @@ int designware_initialize(ulong base_addr, u32 interface)
 	ret = dw_phy_init(dev);
 
 #ifdef ETHERNET_EXTERNAL_PHY
-	if (check_eth_para()) {
-		run_command("autocali 5 1 1 0", 0);
-	}
-	if (bestwindow >= 0) {
-		sprintf(cmd, "fdt set /ethernet@%08x auto_cali_idx <%d>", (unsigned int)base_addr, bestwindow);
-		run_command("fdt addr $dtb_mem_addr", 0);
-		run_command(cmd, 0);
+#if defined(CONFIG_KHADAS_VIM3) || defined(CONFIG_KHADAS_VIM3L)
+	/* the M2X extension board phy is not the on-board one: skip autocali */
+	char *s = getenv("ext_ethernet");
+	bool is_ext = (s != NULL) && (strcmp(s, "0") != 0);
+	if (is_ext)
+		printf("ext_ethernet=%s\n", s);
+	if (!is_ext)
+#endif
+	{
+		if (check_eth_para()) {
+			run_command("autocali 5 1 1 0", 0);
+		}
+		if (bestwindow >= 0) {
+			sprintf(cmd, "fdt set /ethernet@%08x auto_cali_idx <%d>", (unsigned int)base_addr, bestwindow);
+			run_command("fdt addr $dtb_mem_addr", 0);
+			run_command(cmd, 0);
+		}
 	}
 #endif
 	return ret;
@@ -745,7 +755,11 @@ static int do_autocali(cmd_tbl_t *cmdtp, int flag, int argc,
 	reg = phy_read(priv->phydev, MDIO_DEVAD_NONE,0x11);
 	reg = phy_write(priv->phydev, MDIO_DEVAD_NONE, 0x11, reg & (~0x100));
 	reg = phy_read(priv->phydev, MDIO_DEVAD_NONE,0x15);
+#if defined(CONFIG_KHADAS_VIM3) || defined(CONFIG_KHADAS_VIM3L)
+	reg = phy_write(priv->phydev, MDIO_DEVAD_NONE, 0x15, reg & (~0x108));
+#else
 	reg = phy_write(priv->phydev, MDIO_DEVAD_NONE, 0x15, reg & (~0x8));
+#endif
 	phy_write(priv->phydev, MDIO_DEVAD_NONE, 31, 0x0);
 	writel(0x1621, 0xff634540);
 	for (i = 0; i < 16; i++) {
