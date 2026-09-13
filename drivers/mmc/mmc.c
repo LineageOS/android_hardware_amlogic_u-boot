@@ -1589,7 +1589,12 @@ static int mmc_startup(struct mmc *mmc)
 
 	mmc_set_clock(mmc, mmc->tran_speed);
 
+#if defined(CONFIG_KHADAS_VIM3) || defined(CONFIG_KHADAS_VIM3L)
+	/* khadas: also refix plain high speed sd cards */
+	if (mmc->card_caps & MMC_MODE_HS) {
+#else
 	if (mmc->card_caps & MMC_MODE_HS_52MHz) {
+#endif
 		err = aml_emmc_refix(mmc);
 		if (err)
 			return err;
