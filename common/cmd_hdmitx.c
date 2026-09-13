@@ -74,6 +74,9 @@ static int do_hpd_detect(cmd_tbl_t *cmdtp, int flag, int argc,
 #ifdef CONFIG_AML_LCD
 	struct aml_lcd_drv_s *lcd_drv = NULL;
 	char *mode;
+#ifdef CONFIG_KHADAS_LCD
+	char *lcd_exist;
+#endif
 #endif
 	int st;
 	char* hdmimode;
@@ -85,8 +88,16 @@ static int do_hpd_detect(cmd_tbl_t *cmdtp, int flag, int argc,
 	if (lcd_drv) {
 		if (lcd_drv->lcd_outputmode_check) {
 			mode = getenv("outputmode");
-			if (lcd_drv->lcd_outputmode_check(mode) == 0)
+			if (lcd_drv->lcd_outputmode_check(mode) == 0) {
+#ifdef CONFIG_KHADAS_LCD
+				/* only trust a panel outputmode if the panel was detected */
+				lcd_exist = getenv("lcd_exist");
+				if (lcd_exist && strcmp(lcd_exist, "1") == 0)
+					return 0;
+#else
 				return 0;
+#endif
+			}
 		}
 	}
 #endif
@@ -928,7 +939,42 @@ static int do_get_preferred_mode(cmd_tbl_t * cmdtp, int flag, int argc,
 		sprintf(color_attr, "setenv colorattribute %s", "444,8bit");
 	}
 	printk("sink preferred_mode is %s[%d]\n", para->sname, hdev->RXCap.preferred_mode);
+#if defined(CONFIG_KHADAS_VIM3) || defined(CONFIG_KHADAS_VIM3L)
+	/* khadas: a vesa-only monitor becomes the saved outputmode */
+	switch(hdev->RXCap.preferred_mode)
+	{
+		case HDMIV_1024x768p60hz:
+		case HDMIV_1440x900p60hz:
+		case HDMIV_640x480p60hz:
+		case HDMIV_1280x1024p60hz:
+	    case HDMIV_800x600p60hz:
+		case HDMIV_1680x1050p60hz:
+		case HDMIV_1024x600p60hz:
+		case HDMIV_2560x1600p60hz:
+		case HDMIV_2560x1440p60hz:
+	    case HDMIV_2560x1080p60hz:
+		case HDMIV_1920x1200p60hz:
+		case HDMIV_1600x1200p60hz:
+		case HDMIV_1600x900p60hz:
+		case HDMIV_1360x768p60hz:
+	    case HDMIV_1280x800p60hz:
+		case HDMIV_480x320p60hz:
+		case HDMIV_800x480p60hz:
+            case HDMIV_1280x480p60hz:
+		{
+          printk("hdev->RXCap.preferred_mode %d \n",hdev->RXCap.preferred_mode);
+		  setenv("hdmimode", para->sname);
+		  setenv("outputmode", para->sname);
+		  //setenv("ubootenv.var.outputmode", para->sname);
+		  setenv ("colorattribute","rgb,8bit");
+		  run_command("saveenv", 0);
+	    }
+		break;
+		default:
+		printk("hdmi screen is not single resolution\n");
 
+	}
+#endif
 bypass_edid_read:
 	/* save to ENV */
 	/*

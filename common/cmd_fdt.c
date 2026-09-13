@@ -57,7 +57,14 @@ static int fdt_value_setenv(const void *nodep, int len, const char *var)
 	else if (len == 4) {
 		char buf[11];
 
-		sprintf(buf, "0x%08X", *(uint32_t *)nodep);
+#if defined(CONFIG_KHADAS_VIM3) || defined(CONFIG_KHADAS_VIM3L)
+		if ((strcmp(var, "usb2_phy0") == 0) || (strcmp(var, "usb2_phy1") == 0) || (strcmp(var, "usb3_pcie_phy") == 0)) {
+			sprintf(buf, "0x%08X", fdt32_to_cpu(*(fdt32_t *)nodep));
+		} else
+#endif
+		{
+			sprintf(buf, "0x%08X", *(uint32_t *)nodep);
+		}
 		setenv(var, buf);
 	} else if (len%4 == 0 && len <= 20) {
 		/* Needed to print things like sha1 hashes. */
