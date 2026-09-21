@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcd4125_1ed1020c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-21T08:02:58Z",
+      "side": 1,
+      "message": "Are these and the rest of fixups! coming from Khadas? If not, I\u0027d prefer you to remove them entirely from this alreadu huge commit message.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "5198b0564585e737fdf8d7f8a221f4d697679818",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed44a3fd_a78f5755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-21T08:02:58Z",
+      "side": 1,
+      "message": "Assisted-by: ClaudeCode:claude-opus-5",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 71
+      },
+      "revId": "5198b0564585e737fdf8d7f8a221f4d697679818",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee92843_43a94143",
