@@ -71,6 +71,30 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65c0029_660cbcd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2026-09-21T16:31:38Z",
+      "side": 1,
+      "message": "Aware.",
+      "parentUuid": "4c815b31_36f3aad3",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 71
+      },
+      "revId": "5198b0564585e737fdf8d7f8a221f4d697679818",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee92843_43a94143",
