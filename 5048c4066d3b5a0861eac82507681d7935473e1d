@@ -45,6 +45,30 @@
       },
       "revId": "5048c4066d3b5a0861eac82507681d7935473e1d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5737f9c_1e4b1ba6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-09-21T16:15:45Z",
+      "side": 1,
+      "message": "https://github.com/LineageOS/charter/blob/main/ai-coding-assistants.md#attribution",
+      "parentUuid": "2a238a1a_0c87c1b4",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "5048c4066d3b5a0861eac82507681d7935473e1d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
