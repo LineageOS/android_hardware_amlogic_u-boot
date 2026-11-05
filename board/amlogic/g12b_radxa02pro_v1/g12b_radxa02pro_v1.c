@@ -74,7 +74,7 @@ int serial_set_pin_port(unsigned long port_base)
 int dram_init(void)
 {
 	//gd->ram_size = PHYS_SDRAM_1_SIZE;
-	gd->ram_size = (((readl(AO_SEC_GP_CFG0)) & 0xFFFF0000) << 4);
+	gd->ram_size = ((phys_size_t)(readl(AO_SEC_GP_CFG0) & 0xFFFF0000)) << 4;
 	return 0;
 }
 
@@ -693,9 +693,9 @@ phys_size_t get_effective_memsize(void)
 {
 	// >>16 -> MB, <<20 -> real size, so >>16<<20 = <<4
 #if defined(CONFIG_SYS_MEM_TOP_HIDE)
-	return (((readl(AO_SEC_GP_CFG0)) & 0xFFFF0000) << 4) - CONFIG_SYS_MEM_TOP_HIDE;
+	return (((phys_size_t)(readl(AO_SEC_GP_CFG0) & 0xFFFF0000)) << 4) - CONFIG_SYS_MEM_TOP_HIDE;
 #else
-	return (((readl(AO_SEC_GP_CFG0)) & 0xFFFF0000) << 4);
+	return ((phys_size_t)(readl(AO_SEC_GP_CFG0) & 0xFFFF0000)) << 4;
 #endif
 }
 
