@@ -457,8 +457,7 @@ static int bootm_find_fdt(int flag, int argc, char * const argv[])
 	fdth = (struct fdt_header *)(images.ft_addr);
 	if (get_fdto_totalsize(&fdto_totalsize) == 0)
 		fdth->totalsize = cpu_to_fdt32(fdt_get_header(dtb_mem_addr,
-					       totalsize)) + cpu_to_fdt32(
-					       fdto_totalsize);
+					       totalsize) + fdto_totalsize);
 	#endif
 	images.ft_len = fdt_get_header(dtb_mem_addr, totalsize);
 	#endif
