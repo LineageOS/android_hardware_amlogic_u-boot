@@ -699,6 +699,19 @@ phys_size_t get_effective_memsize(void)
 #endif
 }
 
+#ifdef CONFIG_OF_BOARD_SETUP
+int ft_board_setup(void *blob, bd_t *bd)
+{
+	int node = fdt_subnode_offset(blob, 0, "memory");
+
+	if (node >= 0)
+		fdt_delprop(blob, node, "reg");
+
+	return fdt_fixup_memory(blob, bd->bi_dram[0].start,
+				bd->bi_dram[0].size + CONFIG_SYS_MEM_TOP_HIDE);
+}
+#endif
+
 #ifdef CONFIG_MULTI_DTB
 int checkhw(char * name)
 {
